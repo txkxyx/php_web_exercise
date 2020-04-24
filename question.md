@@ -1,5 +1,7 @@
 # PHP演習課題　Web編
 
+認証機能付きのチャットアプリを作成します。以下の手順に従いながらアプリを完成させます。
+
 ## 準備
 
 以下のようなデータベースを作成します。
@@ -59,6 +61,7 @@ insert into conversations(id, user_name, body, date)values(3, 'MySQL', 'Hello My
 
 - `htpp://localhost/main.php`にアクセスすると画面が表示されること
 - 会話テーブルの会話の一覧を表示する。
+- 会話は、「本文（投稿者：投稿日時）」の形式で表示すること
 - 会話は新しい順に画面の上部から表示すること
 - 以下の画面イメージのような項目を表示すること
 
@@ -72,7 +75,7 @@ insert into conversations(id, user_name, body, date)values(3, 'MySQL', 'Hello My
     - 各会話の本文の部分をリンクにせよ
     - 各リンクをクリックすると、クリックされた会話のIDをURLパラメーターに設定し`edit.php`に遷移すること
 
-![画面イメージ](img/2-2.png)
+![画面イメージ](img/2-1.png)
 
 - edit.php
     - リクエストから会話IDを取得すること
