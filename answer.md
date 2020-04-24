@@ -88,23 +88,23 @@ $conversations = get_conversations()
     ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Chat List</h2>
-    <ul>
-    <?php foreach ($conversations as $conversation) { ?>
-        <li>
-        <a href="chat/edit.php?id=<?= $conversation['id']?>"><?= htmlspecialchars($conversation['body']) ?></a><?= htmlspecialchars('('.$conversation['user_name'].':'.$conversation['date'].')') ?>
-        </li>
-    <?php } ?>
-    </ul>
-    <hr>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat List</h2>
+            <ul>
+            <?php foreach ($conversations as $conversation) { ?>
+                <li>
+                <a href="chat/edit.php?id=<?= $conversation['id']?>"><?= htmlspecialchars($conversation['body']) ?></a><?= htmlspecialchars('('.$conversation['user_name'].':'.$conversation['date'].')') ?>
+                </li>
+            <?php } ?>
+            </ul>
+            <hr>
+        </body>
     </html>
     ```
 
@@ -131,33 +131,33 @@ $conversations = get_conversations()
     ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Chat Edit</h2>
-    <input type="hidden" name="id" value="<?= $conversation['id']?>">
-    <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
-    <label>BODY:</label><br>
-    <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
-    <input type="submit" name="name" value="edit">
-    <hr>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat Edit</h2>
+            <input type="hidden" name="id" value="<?= $conversation['id']?>">
+            <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
+            <label>BODY:</label><br>
+            <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
+            <input type="submit" name="name" value="edit">
+            <hr>
+        </body>
     </html>
     ```
 
 ## 3. POST + Redirect
 
-以下の要件を満たす、`edit_post.php`を作成せよ。また、`edit.php`を変更せよ。
+以下の要件を満たす、`edit_controller.php`を作成せよ。また、`edit.php`を変更せよ。
 
 - edit.php
     - 会話の編集を行う
-    - 会話IDと本文をメッセージボディ部に格納して、`edit_post.php`に送信すること
+    - 会話IDと本文をメッセージボディ部に格納して、`edit_controller.php`に送信すること
 
-- edit_post.php
+- edit_controller.php
     - 編集された会話の登録を行う
     - リクエストから、会話IDと本文を取得すること
     - 取得した会話IDの会話の本文を変更すること。その際変更を実行した日時を対象の会話のデータの`date`に格納すること。
@@ -190,27 +190,27 @@ $conversations = get_conversations()
     ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Chat Edit</h2>
-    <form action="edit_post.php" method="post">
-        <input type="hidden" name="id" value="<?= $conversation['id']?>">
-        <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
-        <label>BODY:</label><br>
-        <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
-        <input type="submit" name="name" value="edit">
-    </form>
-    <hr>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat Edit</h2>
+            <form action="edit_controller.php" method="post">
+                <input type="hidden" name="id" value="<?= $conversation['id']?>">
+                <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
+                <label>BODY:</label><br>
+                <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
+                <input type="submit" name="name" value="edit">
+            </form>
+            <hr>
+        </body>
     </html>
     ```
 
-    - edit_post.php
+    - edit_controller.php
 
     ```php
     <?php
@@ -262,7 +262,7 @@ $conversations = get_conversations()
     - 認証機能を追加する
     - セッションからメールアドレスを取得できない場合は、各画面を表示せずログイン画面に遷移すること
 
-- edit_post.php
+- edit_controller.php
     - 認証機能を追加する
     - セッションからメールアドレスを取得できない場合は、登録処理を行わずログイン画面に遷移すること
 
@@ -272,22 +272,22 @@ $conversations = get_conversations()
     ```php
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Login</h2>
-    <form action="auth/login_controller.php" method="post">
-        <label>MAIL</label><br>
-        <input type="email" name="mail"><br>
-        <label>PASSWORD</label><br>
-        <input type="password" name="password"><br>
-        <input type="submit" value="login">
-    </form>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Login</h2>
+            <form action="auth/login_controller.php" method="post">
+                <label>MAIL</label><br>
+                <input type="email" name="mail"><br>
+                <label>PASSWORD</label><br>
+                <input type="password" name="password"><br>
+                <input type="submit" value="login">
+            </form>
+        </body>
     </html>
     ```
 
@@ -352,23 +352,23 @@ $conversations = get_conversations()
     ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Chat List</h2>
-    <ul>
-    <?php foreach ($conversations as $conversation) { ?>
-        <li>
-        <a href="chat/edit.php?id=<?= $conversation['id']?>"><?= htmlspecialchars($conversation['body']) ?></a><?= htmlspecialchars('('.$conversation['user_name'].':'.$conversation['date'].')') ?>
-        </li>
-    <?php } ?>
-    </ul>
-    <hr>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat List</h2>
+            <ul>
+            <?php foreach ($conversations as $conversation) { ?>
+                <li>
+                <a href="chat/edit.php?id=<?= $conversation['id']?>"><?= htmlspecialchars($conversation['body']) ?></a><?= htmlspecialchars('('.$conversation['user_name'].':'.$conversation['date'].')') ?>
+                </li>
+            <?php } ?>
+            </ul>
+            <hr>
+        </body>
     </html>
     ```
 
@@ -403,27 +403,27 @@ $conversations = get_conversations()
     ?>
     <!DOCTYPE html>
     <html>
-    <head>
-    <meta charset="utf-8">
-    <title>Chat Application</title>
-    </head>
-    <body>
-    <h1>Chat Application</h1>
-    <hr>
-    <h2>Chat Edit</h2>
-    <form action="edit_post.php" method="post">
-        <input type="hidden" name="id" value="<?= $conversation['id']?>">
-        <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
-        <label>BODY:</label><br>
-        <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
-        <input type="submit" name="name" value="edit">
-    </form>
-    <hr>
-    </body>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat Edit</h2>
+            <form action="edit_controller.php" method="post">
+                <input type="hidden" name="id" value="<?= $conversation['id']?>">
+                <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
+                <label>BODY:</label><br>
+                <textarea name="body" rows="10" cols="30"><?= $conversation['body']?></textarea><br>
+                <input type="submit" name="name" value="edit">
+            </form>
+            <hr>
+        </body>
     </html>
     ```
 
-    - edit_post.php
+    - edit_controller.php
 
     ```php
     <?php
@@ -456,4 +456,155 @@ $conversations = get_conversations()
     $conversation['body'] = $body;
     update_conversation($conversation);
     header('location:/main.php');
+    ```
+
+## 5. 会話投稿機能
+
+会話投稿機能を追加せよ。
+
+- `main.php`に投稿画面に遷移するリンクを配置せよ
+- 投稿画面では、ユーザー名と本文を入力できること
+- 投稿画面に遷移するにはログインしている必要があり、ログインしていない場合はログイン画面に遷移すること
+- 会話を投稿するにはログインしている必要があり、ログインしていない場合はログイン画面に遷移すること
+
+- 解答例
+    - post.php
+
+    ```php
+    <?php
+
+    function get_user($mail){
+        $pdo = new PDO('mysql:host=localhost:3306;dbname=exercise', 'root', 'root');
+
+        $st = $pdo->prepare("select id, mail, name from users where mail = :mail");
+
+        $st->bindValue(':mail', $mail);
+        $st->execute();
+
+        $user = $st->fetch();
+
+        return $user;
+    }
+
+    session_start();
+
+    $mail = $_SESSION['mail'];
+
+    if (is_null($mail)) {
+        header('location:/login.php');
+    }
+
+    $user = get_user($mail);
+    if(is_null($user)){
+        header('location:main.php');
+    }
+    ?>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat Post</h2>
+            <form action="post_controller.php" method="post">
+                <input type="hidden" name="name" value="<?= $user['name']?>">
+                <label>NAME : <?= htmlspecialchars($user['name']) ?></label><br>
+                <label>BODY:</label><br>
+                <textarea name="body" rows="10" cols="30"></textarea><br>
+                <input type="submit" value="post">
+            </form>
+            <hr>
+        </body>
+    </html>
+    ```
+
+    - post_controller.php
+
+    ```php
+    <?php
+
+    function update_conversation($conversation){
+
+        $pdo = new PDO('mysql:host=localhost:3306;dbname=exercise', 'root', 'root');
+    
+        $st = $pdo->prepare("insert into conversations(user_name, body, date)values(:name, :body, now())");
+    
+        $st->bindValue(':name', $conversation['name']);
+        $st->bindValue(':body', $conversation['body']);
+        $st->execute();
+    }
+
+    session_start();
+
+    $mail = $_SESSION['mail'];
+
+    if (is_null($mail)) {
+        header('location:/login.php');
+    }
+
+    $name = $_POST['name'];
+    $body = $_POST['body'];
+
+    if (is_null($id) || is_null($body)) {
+        header('location:/main.php');
+    }
+
+    $conversation = [];
+    $conversation['name'] = $name;
+    $conversation['body'] = $body;
+    update_conversation($conversation);
+    header('location:/main.php');
+    ```
+
+    - main.php
+
+    ```php
+    <?php
+
+    function get_conversations(){
+        $pdo = new PDO('mysql:host=localhost:3306;dbname=exercise', 'root', 'root');
+
+        $st = $pdo->prepare("select id, user_name, body, date from conversations order by date desc");
+
+        $st->execute();
+
+        $conversations = $st->fetchAll();
+
+        return $conversations;
+    }
+
+    session_start();
+
+    $mail = $_SESSION['mail'];
+
+    if (is_null($mail)) {
+    header('location:/login.php');
+    }
+
+    $conversations = get_conversations()
+    ?>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Chat Application</title>
+        </head>
+        <body>
+            <h1>Chat Application</h1>
+            <hr>
+            <h2>Chat List</h2>
+            <a href="chat/post.php">new</a>
+            <ul>
+            <?php foreach ($conversations as $conversation) { ?>
+                <li>
+                <a href="chat/edit.php?id=<?= $conversation['id']?>"><?= htmlspecialchars($conversation['body']) ?></a><?= htmlspecialchars('('.$conversation['user_name'].':'.$conversation['date'].')') ?>
+                </li>
+            <?php } ?>
+            </ul>
+            <hr>
+        </body>
+    </html>
     ```

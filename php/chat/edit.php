@@ -37,7 +37,7 @@ if(is_null($conversation)){
   <h1>Chat Application</h1>
   <hr>
   <h2>Chat Edit</h2>
-  <form action="edit_post.php" method="post">
+  <form action="edit_controller.php" method="post">
     <input type="hidden" name="id" value="<?= $conversation['id']?>">
     <label>NAME : <?= htmlspecialchars($conversation['user_name']) ?></label><br>
     <label>BODY:</label><br>

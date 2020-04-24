@@ -32,6 +32,7 @@ $conversations = get_conversations()
   <h1>Chat Application</h1>
   <hr>
   <h2>Chat List</h2>
+  <a href="chat/post.php">new</a>
   <ul>
   <?php foreach ($conversations as $conversation) { ?>
     <li>

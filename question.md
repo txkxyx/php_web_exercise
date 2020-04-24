@@ -87,13 +87,13 @@ insert into conversations(id, user_name, body, date)values(3, 'MySQL', 'Hello My
 
 ## 3. POST + Redirect
 
-以下の要件を満たす、`edit_post.php`を作成せよ。また、`edit.php`を変更せよ。
+以下の要件を満たす、`edit_controller.php`を作成せよ。また、`edit.php`を変更せよ。
 
 - edit.php
     - 会話の編集を行う
-    - 会話IDと本文をメッセージボディ部に格納して、`edit_post.php`に送信すること
+    - 会話IDと本文をメッセージボディ部に格納して、`edit_controller.php`に送信すること
 
-- edit_post.php
+- edit_controller.php
     - 編集された会話の登録を行う
     - リクエストから、会話IDと本文を取得すること
     - 取得した会話IDの会話の本文を変更すること。その際変更を実行した日時を対象の会話のデータの`date`に格納すること。
@@ -121,7 +121,7 @@ insert into conversations(id, user_name, body, date)values(3, 'MySQL', 'Hello My
     - 認証機能を追加する
     - セッションからメールアドレスを取得できない場合は、各画面を表示せずログイン画面に遷移すること
 
-- edit_post.php
+- edit_controller.php
     - 認証機能を追加する
     - セッションからメールアドレスを取得できない場合は、登録処理を行わずログイン画面に遷移すること
 
