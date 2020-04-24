@@ -128,3 +128,7 @@ insert into conversations(id, user_name, body, date)values(3, 'MySQL', 'Hello My
 ## 5. 会話投稿機能
 
 会話投稿機能を追加せよ。
+
+- `main.php`に投稿画面に遷移するリンクを配置せよ
+- 投稿画面では、ユーザー名と本文を入力できること
+- 投稿画面に遷移するにはログインしている必要があり、ログインしていない場合はログイン画面に遷移すること
